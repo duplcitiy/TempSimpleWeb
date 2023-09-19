@@ -1,4 +1,5 @@
 const contentDiv = document.getElementById("content");
+let isContentLoaded = false; // Flag to track if content has been loaded
 
 function loadContent(page) {
     fetch(`pages/${page}.html`)
@@ -12,14 +13,24 @@ function loadContent(page) {
         });
 }
 
-function handleNavigation() {
-    const hash = window.location.hash.slice(1);
-    if (hash === "") {
-        console.log(hash);
-        loadContent("home");
-    } else {
-        loadContent(hash);
+function updateActiveState(targetElement) {
+    document.querySelectorAll('a.nav-link').forEach(anchor => {
+        if (anchor === targetElement) {
+            anchor.classList.add('active');
+        } else {
+            anchor.classList.remove('active');
+        }
+    });
+
+    // Set the "Home" link as active by default on initial load
+    if (targetElement === "home") {
+        document.querySelector('a.nav-link[href="#home"]').classList.add('active');
     }
+}
+
+function handleNavigation(page) {
+    loadContent(page);
+    updateActiveState(page);
 }
 
 function detectScreenSize() {
@@ -42,25 +53,18 @@ window.addEventListener("resize", detectScreenSize);
 // Initial call to detect screen size on page load
 detectScreenSize();
 
+// Load the "Home" page content and set the "Home" link as active by default only once
+document.addEventListener("DOMContentLoaded", function () {
+    if (!isContentLoaded) {
+        handleNavigation("home");
+        isContentLoaded = true; // Set the flag to indicate content has been loaded
+    }
+});
 
-// Smooth scrolling for navigation links
+// Add event listeners for navigation links
 document.querySelectorAll('a.nav-link').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-
-        const targetId = this.getAttribute('href').slice(1);
-        const targetElement = document.getElementById(targetId);
-
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop,
-                behavior: 'smooth'
-            });
-        }
+        handleNavigation(this.getAttribute('href').slice(1));
     });
 });
-
-
-// Add event listeners for hashchange and load
-window.addEventListener("hashchange", handleNavigation);
-window.addEventListener("load", handleNavigation);
