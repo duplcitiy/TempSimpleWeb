@@ -14,23 +14,21 @@ function loadContent(page) {
 }
 
 function updateActiveState(targetElement) {
-    document.querySelectorAll('a.nav-link').forEach(anchor => {
-        if (anchor === targetElement) {
-            anchor.classList.add('active');
-        } else {
-            anchor.classList.remove('active');
-        }
-    });
-
-    // Set the "Home" link as active by default on initial load
-    if (targetElement === "home") {
-        document.querySelector('a.nav-link[href="#home"]').classList.add('active');
+    // Check if the targetElement exists before manipulating it
+    if (targetElement) {
+        document.querySelectorAll('a.nav-link').forEach(anchor => {
+            if (anchor === targetElement) {
+                anchor.classList.add('active'); // Add the .active and .nav-masthead classes
+            } else {
+                anchor.classList.remove('active',); // Remove the .active and .nav-masthead classes
+            }
+        });
     }
 }
 
 function handleNavigation(page) {
+    updateActiveState(document.querySelector(`a.nav-link[href="#${page}"]`));
     loadContent(page);
-    updateActiveState(page);
 }
 
 function detectScreenSize() {
