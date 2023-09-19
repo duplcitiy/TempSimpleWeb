@@ -42,6 +42,7 @@ window.addEventListener("resize", detectScreenSize);
 // Initial call to detect screen size on page load
 detectScreenSize();
 
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a.nav-link').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -58,6 +59,7 @@ document.querySelectorAll('a.nav-link').forEach(anchor => {
         }
     });
 });
+
 
 // Add event listeners for hashchange and load
 window.addEventListener("hashchange", handleNavigation);
