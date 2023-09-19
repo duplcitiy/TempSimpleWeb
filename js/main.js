@@ -42,6 +42,23 @@ window.addEventListener("resize", detectScreenSize);
 // Initial call to detect screen size on page load
 detectScreenSize();
 
+// Smooth scrolling for navigation links
+document.querySelectorAll('a.nav-link').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href').slice(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
 // Add event listeners for hashchange and load
 window.addEventListener("hashchange", handleNavigation);
 window.addEventListener("load", handleNavigation);
