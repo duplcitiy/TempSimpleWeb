@@ -24,6 +24,9 @@ function updateActiveState(targetElement) {
             } else {
                 anchor.classList.remove('active',); // Remove the .active and .nav-masthead classes
             }
+        
+        targetElement.blur();
+            
         });
     
     }
@@ -31,6 +34,8 @@ function updateActiveState(targetElement) {
 
 function handleNavigation(page) {
     updateActiveState(document.querySelector(`a.nav-link[href="#${page}"]`));
+    // Remove focus from the element with the "active" class
+    
     loadContent(page);
     
 }
