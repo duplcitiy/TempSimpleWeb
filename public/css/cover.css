@@ -43,8 +43,12 @@ body {
 }
 
 .cover-container {
-  max-width: 42em;
+  max-width: 90%; /* Set a maximum width as a percentage of the window width */
+  margin: 0 auto; /* Center the container horizontally */
+  padding-left: 5%; /* Add left padding as a percentage for a gap on the left */
+  padding-right: 5%; /* Add right padding as a percentage for a gap on the right */
 }
+
 
 
 /*
