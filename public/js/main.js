@@ -12,6 +12,8 @@ function loadContent(page) {
             console.error('Error loading content: ', error);
         });
 }
+const bodyElement = document.body;
+
 
 function updateActiveState(targetElement) {
     // Check if the targetElement exists before manipulating it
@@ -23,12 +25,14 @@ function updateActiveState(targetElement) {
                 anchor.classList.remove('active',); // Remove the .active and .nav-masthead classes
             }
         });
+    
     }
 }
 
 function handleNavigation(page) {
     updateActiveState(document.querySelector(`a.nav-link[href="#${page}"]`));
     loadContent(page);
+    
 }
 
 function detectScreenSize() {
