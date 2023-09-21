@@ -1,81 +1,18 @@
-/* Global styles */
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #f8f9fa; /* Light gray background for the entire page */
-    margin: 0; /* Remove default margin */
-    font-family: Arial, sans-serif;
-}
-
-/* Header styles */
-.header {
-    background-color: #343a40; /* Dark background for header */
-}
-
-.header h1 {
-    font-size: 2.5rem; /* Larger font size for the header */
-    margin: 0; /* Remove default margin */
-}
-
-.header a {
-    color: #fff; /* White text color for header links */
-    text-decoration: none; /* Remove underlines from links */
-}
-
-/* Navigation styles */
-.navbar {
-    padding: 0; /* Remove default padding */
-}
-
-.navbar-toggler {
-    border: none; /* Remove border from the hamburger button */
-}
-
-.navbar .navbar-nav {
-    margin: 0; /* Remove default margin */
-}
-
-.navbar .nav-item {
-    margin: 0; /* Remove default margin */
-}
-
-.navbar .nav-link {
-    color: #333; /* Dark gray text color for navigation links */
-    font-weight: bold; /* Bold font for navigation links */
-    text-transform: uppercase; /* Uppercase text for navigation links */
-    margin: 0 10px; /* Add spacing between navigation links */
-}
-
-.navbar .nav-link:hover {
-    color: #007bff; /* Change link color on hover */
-}
-/* Main content styles */
-#content {
-    flex: 1;
-    background-color: #fff; /* White background for main content */
-    padding: 20px; /* Add padding for separation */
-    border: 2px solid #007bff; /* Add a 2px solid blue border to the main content */
-    border-radius: 5px; /* Add border radius for a rounded appearance */
-}
-/* Footer styles */
-.footer {
-    background-color: #343a40; /* Dark background for footer */
-    color: #fff; /* White text color for footer */
-    font-weight: bold; /* Bold font for footer */
+.parent {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 1fr 0.1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
     text-align: center;
-    padding: 10px; /* Reduce footer padding for a thinner appearance */
+    width: 100vw; /* Make the parent 100% of the viewport width */
+    height: 100vh; /* Make the parent 100% of the viewport height */
+    overflow: hidden;
 }
 
-/* Responsive styles for small screens */
-@media (max-width: 768px) {
-    .navbar .nav-link {
-        margin: 0; /* Remove margin for small screens */
-    }
-    .navbar .navbar-nav {
-        flex-direction: column; /* Stack navigation links for small screens */
-    }
-    .navbar-toggler {
-        margin-right: 10px; /* Add margin to the hamburger button */
-    }
+.parent > div {
+    
+    padding: 20px;
+    width: 100%; /* Make the child elements 100% width of their parent */
+    overflow: hidden; /* Add scrollbars if content overflows */
 }
